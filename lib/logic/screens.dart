@@ -1,4 +1,5 @@
 import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/status.dart';
 
 abstract class Screen {
 
@@ -8,6 +9,11 @@ abstract class Screen {
 abstract class ActionableScreen extends Screen {
 
   List<Action> get actions;
+}
+
+abstract class ResultScreen extends Screen {
+
+  Status get status;
 }
 
 class DidSheAskToExplainThisScreen extends ActionableScreen {
@@ -50,30 +56,38 @@ class YouAskedIfSheNeedsExplanationScreen extends ActionableScreen {
   List<Action> get actions => [SheRefusedExplanation(), IDidNotAskPermission(), SheAgreedToExplanation()];
 }
 
-class NotMansplainingScreen extends Screen {
+class NotMansplainingScreen extends ResultScreen {
+
+  @override
+  Status get status => Status.Good;
 
   @override
   String get title => "Not mansplaining.";
-
 }
 
-class ProbablyMansplainingScreen extends Screen {
+class ProbablyMansplainingScreen extends ResultScreen {
+
+  @override
+  Status get status => Status.Bad;
 
   @override
   String get title => "Probably mansplaining.";
-
 }
 
-class DefinitelyMansplainingScreen extends Screen {
+class DefinitelyMansplainingScreen extends ResultScreen {
+
+  @override
+  Status get status => Status.Terrible;
 
   @override
   String get title => "Definitely mansplaining.";
-
 }
 
-class StopNowScreen extends Screen {
+class StopNowScreen extends ResultScreen {
+
+  @override
+  Status get status => Status.Disaster;
 
   @override
   String get title => "Just stop talking now.";
-
 }

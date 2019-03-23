@@ -2,7 +2,7 @@ import 'package:mansplaining/logic/action.dart';
 import 'package:mansplaining/logic/exceptions.dart';
 import 'package:mansplaining/logic/screens.dart';
 
-class Navigator {
+class NavigatorReducer {
 
   Screen navigate(Screen screen, Action action) {
     switch (screen.runtimeType) {

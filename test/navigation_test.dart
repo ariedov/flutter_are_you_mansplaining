@@ -5,7 +5,7 @@ import 'package:test_api/test_api.dart';
 
 void main()
 {
-  var navigator = new Navigator();
+  var navigator = new NavigatorReducer();
 
   test('She asked to explain it', () {
     var result = navigator.navigate(DidSheAskToExplainThisScreen(), new Yes());

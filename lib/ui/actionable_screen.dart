@@ -5,8 +5,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 class ScreenWidget extends StatelessWidget {
   final ActionableScreen screen;
+  final ScreenCallback callback;
 
-  const ScreenWidget({Key key, this.screen}) : super(key: key);
+  const ScreenWidget({Key key, this.screen, this.callback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class ScreenWidget extends StatelessWidget {
                       padding: EdgeInsets.all(16.0),
                       child: AutoSizeText(
                         screen.title,
-                        style: TextStyle(fontSize: 72.0),
-                        maxLines: 5,
+                        style: TextStyle(fontSize: 64.0),
+                        maxLines: 4,
                         minFontSize: 48.0,
                       ),
                     ),
@@ -35,7 +36,7 @@ class ScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:
                 screen.actions.map(_buildActionButton).toList(),
@@ -48,17 +49,20 @@ class ScreenWidget extends StatelessWidget {
 
   Widget _buildActionButton(Action action) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: EdgeInsets.all(8.0),
       child: RaisedButton(
-        child: Padding(
+        child: Container(
+          width: double.infinity,
           padding: EdgeInsets.all(8.0),
           child: Text(
             action.name,
             style: TextStyle(fontSize: 24),
           ),
         ),
-        onPressed: () {},
+        onPressed: () => callback(screen, action),
       ),
     );
   }
 }
+
+typedef ScreenCallback = void Function(Screen screen, Action action);
