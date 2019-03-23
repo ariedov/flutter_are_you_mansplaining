@@ -4,6 +4,8 @@ import 'package:mansplaining/logic/screens.dart';
 
 class NavigatorReducer {
 
+  Screen get first => new DidSheAskToExplainThisScreen();
+
   Screen navigate(Screen screen, Action action) {
     switch (screen.runtimeType) {
       case DidSheAskToExplainThisScreen:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mansplaining/logic/action.dart';
 import 'package:mansplaining/logic/navigator.dart';
 import 'package:mansplaining/logic/screens.dart';
 import 'package:mansplaining/ui/actionable_screen.dart';
+import 'package:mansplaining/ui/initial_screen.dart';
 import 'package:mansplaining/ui/result_screen.dart';
 
 void main() => runApp(MyApp());
@@ -26,35 +26,34 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenWidget(
-      screen: DidSheAskToExplainThisScreen(),
-      callback: (screen, action) {
-        _navigateToNewScreen(context, screen, action);
-      },
-    );
+    return InitialScreenWidget(
+      startFlowCallback: () =>
+        _navigateToNewScreen(context, _createScreenWidget(context, navigator.first)));
   }
 
-  _navigateToNewScreen(BuildContext context, Screen screen, Action action) {
-    var newScreen = navigator.navigate(screen, action);
-
+  _createScreenWidget(BuildContext context, Screen screen) {
     Widget screenWidget;
-    if (newScreen is ActionableScreen) {
+    if (screen is ActionableScreen) {
       screenWidget = ScreenWidget(
-        screen: newScreen,
+        screen: screen,
         callback: (screen, action) {
-          _navigateToNewScreen(context, screen, action);
+          _navigateToNewScreen(context, _createScreenWidget(context, navigator.navigate(screen, action)));
         },
       );
     }
 
-    if (newScreen is ResultScreen) {
+    if (screen is ResultScreen) {
       screenWidget = ResultScreenWidget(
-        screen: newScreen,
+        screen: screen,
       );
     }
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return screenWidget;
+    return screenWidget;
+  }
+
+  _navigateToNewScreen(BuildContext context, Widget screen) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      return screen;
     }));
   }
 }
