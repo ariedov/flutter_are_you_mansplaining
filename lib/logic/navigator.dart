@@ -66,6 +66,8 @@ class NavigatorReducer {
         return StopNowScreen();
       case IDidNotAskPermission:
         return ProbablyMansplainingScreen();
+      default:
+        throw InvalidActionException();
     }
   }
 }
