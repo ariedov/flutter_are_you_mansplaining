@@ -1,6 +1,6 @@
-import 'package:mansplaining/action.dart';
-import 'package:mansplaining/navigator.dart';
-import 'package:mansplaining/screens.dart';
+import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/navigator.dart';
+import 'package:mansplaining/logic/screens.dart';
 import 'package:test_api/test_api.dart';
 
 void main()

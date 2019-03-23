@@ -1,6 +1,6 @@
-import 'package:mansplaining/action.dart';
-import 'package:mansplaining/exceptions.dart';
-import 'package:mansplaining/screens.dart';
+import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/exceptions.dart';
+import 'package:mansplaining/logic/screens.dart';
 
 class Navigator {
 

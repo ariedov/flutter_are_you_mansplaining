@@ -1,4 +1,4 @@
-import 'package:mansplaining/action.dart';
+import 'package:mansplaining/logic/action.dart';
 
 abstract class Screen {
 
