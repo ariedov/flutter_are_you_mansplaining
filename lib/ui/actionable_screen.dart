@@ -39,7 +39,7 @@ class ScreenWidget extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:
-                screen.actions.map(_buildActionButton).toList(),
+                screen.actions.map((action) => _buildActionButton(context, action)).toList(),
           ),
           SizedBox(height: 100)
         ],
@@ -47,7 +47,7 @@ class ScreenWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton(Action action) {
+  Widget _buildActionButton(BuildContext context, Action action) {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: RaisedButton(
@@ -59,10 +59,10 @@ class ScreenWidget extends StatelessWidget {
             style: TextStyle(fontSize: 24),
           ),
         ),
-        onPressed: () => callback(screen, action),
+        onPressed: () => callback(context, screen, action),
       ),
     );
   }
 }
 
-typedef ScreenCallback = void Function(Screen screen, Action action);
+typedef ScreenCallback = void Function(BuildContext context, Screen screen, Action action);

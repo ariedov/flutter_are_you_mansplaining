@@ -27,8 +27,9 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InitialScreenWidget(
-      startFlowCallback: () =>
-        _navigateToNewScreen(context, _createScreenWidget(context, navigator.first)));
+        startFlowCallback: () =>
+            _navigateToNewScreen(
+                context, _createScreenWidget(context, navigator.first)));
   }
 
   _createScreenWidget(BuildContext context, Screen screen) {
@@ -36,16 +37,18 @@ class MyHomePage extends StatelessWidget {
     if (screen is ActionableScreen) {
       screenWidget = ScreenWidget(
         screen: screen,
-        callback: (screen, action) {
-          _navigateToNewScreen(context, _createScreenWidget(context, navigator.navigate(screen, action)));
+        callback: (context, screen, action) {
+          _navigateToNewScreen(context,
+              _createScreenWidget(context, navigator.navigate(screen, action)));
         },
       );
     }
 
     if (screen is ResultScreen) {
       screenWidget = ResultScreenWidget(
-        screen: screen,
-      );
+          screen: screen,
+          startOverCallback: (context) => _navigateToNewScreen(context,
+              _createScreenWidget(context, navigator.first)));
     }
 
     return screenWidget;

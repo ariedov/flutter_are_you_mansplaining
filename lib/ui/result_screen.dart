@@ -2,11 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mansplaining/logic/screens.dart';
 import 'package:mansplaining/logic/status.dart';
+import 'package:share/share.dart';
 
 class ResultScreenWidget extends StatelessWidget {
   final ResultScreen screen;
+  final ResultScreenCallback startOverCallback;
 
-  const ResultScreenWidget({Key key, this.screen}) : super(key: key);
+  const ResultScreenWidget({Key key, this.screen, this.startOverCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,21 @@ class ResultScreenWidget extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.settings_backup_restore),
+                  onPressed: () => startOverCallback(context),
+                ),
+                SizedBox(width: 16.0,),
+                IconButton(
+                  icon: Icon(Icons.share),
+                  onPressed: () => Share.share("Mainsplaining app conclusion: ${screen.title}"),
+                )
+              ],
+            )
           ],
         ),
       ),
@@ -47,3 +64,5 @@ class ResultScreenWidget extends StatelessWidget {
     }
   }
 }
+
+typedef ResultScreenCallback = void Function(BuildContext context);
