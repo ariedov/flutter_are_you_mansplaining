@@ -3,6 +3,8 @@ import 'package:mansplaining/logic/screens.dart';
 import 'package:mansplaining/ui/result_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'ui_test_util.dart';
+
 void main() {
   testWidgets('Not mansplaining screen test', (tester) async {
     final screen = NotMansplainingScreen();
@@ -67,14 +69,4 @@ void main() {
     await tester.tap(find.byIcon(Icons.settings_backup_restore));
     expect(called, true);
   });
-}
-
-Widget boilerplate(Widget screen) {
-  return Directionality(
-    child: MediaQuery(
-      data: MediaQueryData(),
-      child: screen,
-    ),
-    textDirection: TextDirection.ltr,
-  );
 }
