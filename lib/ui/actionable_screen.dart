@@ -12,37 +12,36 @@ class ScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 60.0),
-                  child: Card(
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: AutoSizeText(
-                        screen.title,
-                        style: TextStyle(fontSize: 64.0),
-                        maxLines: 4,
-                        minFontSize: 48.0,
-                      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 32.0),
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: AutoSizeText(
+                      screen.title,
+                      style: TextStyle(fontSize: 64.0),
+                      maxLines: 4,
+                      minFontSize: 48.0,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 50,),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: screen.actions
+                    .map((action) => _buildActionButton(context, action))
+                    .toList(),
+              ),
+            ],
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:
-                screen.actions.map((action) => _buildActionButton(context, action)).toList(),
-          ),
-          SizedBox(height: 100)
-        ],
+        ),
       ),
     );
   }
@@ -65,4 +64,5 @@ class ScreenWidget extends StatelessWidget {
   }
 }
 
-typedef ScreenCallback = void Function(BuildContext context, Screen screen, Action action);
+typedef ScreenCallback = void Function(
+    BuildContext context, Screen screen, Action action);
