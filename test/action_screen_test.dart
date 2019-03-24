@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mansplaining/logic/action.dart';
 import 'package:mansplaining/logic/screens.dart';
@@ -70,28 +71,32 @@ void main() {
     final titleFinder = find.text(screen.title);
     expect(titleFinder, findsOneWidget);
 
-    final iHaveMoreExperienceActionFinder = find.text(IHaveMoreExperience().name);
-    final sameExperienceActionFinder = find.text(AboutTheSameExperience().name);
-    final sheHasMoreExperienceActionFinder = find.text(SheHasMoreExperience().name);
-    final sheIsAnExpertActionFinder = find.text(SheIsAnExpert().name);
+    final iHaveMoreExperienceActionFinder = find.widgetWithText(RaisedButton, IHaveMoreExperience().name);
+    final sameExperienceActionFinder = find.widgetWithText(RaisedButton, AboutTheSameExperience().name);
+    final sheHasMoreExperienceActionFinder = find.widgetWithText(RaisedButton, SheHasMoreExperience().name);
+    final sheIsAnExpertActionFinder = find.widgetWithText(RaisedButton, SheIsAnExpert().name);
 
     expect(iHaveMoreExperienceActionFinder, findsOneWidget);
     expect(sameExperienceActionFinder, findsOneWidget);
     expect(sheHasMoreExperienceActionFinder, findsOneWidget);
     expect(sheIsAnExpertActionFinder, findsOneWidget);
 
+    await tester.ensureVisible(iHaveMoreExperienceActionFinder);
     await tester.tap(iHaveMoreExperienceActionFinder);
     expect(callbackEvents[0].screen, screen);
     expect(callbackEvents[0].action, isInstanceOf<IHaveMoreExperience>());
 
+    await tester.ensureVisible(sameExperienceActionFinder);
     await tester.tap(sameExperienceActionFinder);
     expect(callbackEvents[1].screen, screen);
     expect(callbackEvents[1].action, isInstanceOf<AboutTheSameExperience>());
 
+    await tester.ensureVisible(sheHasMoreExperienceActionFinder);
     await tester.tap(sheHasMoreExperienceActionFinder);
     expect(callbackEvents[2].screen, screen);
     expect(callbackEvents[2].action, isInstanceOf<SheHasMoreExperience>());
 
+    await tester.ensureVisible(sheIsAnExpertActionFinder);
     await tester.tap(sheIsAnExpertActionFinder);
     expect(callbackEvents[3].screen, screen);
     expect(callbackEvents[3].action, isInstanceOf<SheIsAnExpert>());
