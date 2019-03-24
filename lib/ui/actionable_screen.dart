@@ -27,7 +27,7 @@ class ScreenWidget extends StatelessWidget {
                       screen.title,
                       style: TextStyle(fontSize: 64.0),
                       maxLines: 4,
-                      minFontSize: 48.0,
+                      minFontSize: 24.0,
                     ),
                   ),
                 ),
