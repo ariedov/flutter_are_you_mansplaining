@@ -28,7 +28,7 @@ class NavigatorReducer {
       case No:
         return YouHaveMoreExperienceScreen();
       default:
-        throw new InvalidActionException();
+        throw InvalidActionException();
     }
   }
 
