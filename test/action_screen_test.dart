@@ -59,6 +59,39 @@ void main() {
     expect(callbackEvents[1].action, isInstanceOf<Yes>());
   });
 
+  testWidgets('You asked if she needs explanation screen test', (tester) async {
+    var screen = YouAskedIfSheNeedsExplanationScreen();
+
+    List<ScreenActionPair> callbackEvents = [];
+    await tester.pumpWidget(boilerplate(ScreenWidget(
+      screen: screen,
+      callback: (context, screen, action) => callbackEvents.add(ScreenActionPair(screen, action)),
+    )));
+
+    final titleFinder = find.text(screen.title);
+    expect(titleFinder, findsOneWidget);
+
+    final sheRefusedExplanationFinder = find.text(SheRefusedExplanation().name);
+    final sheAgreedToExplanationFinder = find.text(SheAgreedToExplanation().name);
+    final noAskFinderFinder = find.text(IDidNotAskPermission().name);
+
+    expect(sheRefusedExplanationFinder, findsOneWidget);
+    expect(sheAgreedToExplanationFinder, findsOneWidget);
+    expect(noAskFinderFinder, findsOneWidget);
+
+    await tester.tap(sheRefusedExplanationFinder);
+    expect(callbackEvents[0].screen, screen);
+    expect(callbackEvents[0].action, isInstanceOf<SheRefusedExplanation>());
+
+    await tester.tap(sheAgreedToExplanationFinder);
+    expect(callbackEvents[1].screen, screen);
+    expect(callbackEvents[1].action, isInstanceOf<SheAgreedToExplanation>());
+
+    await tester.tap(noAskFinderFinder);
+    expect(callbackEvents[2].screen, screen);
+    expect(callbackEvents[2].action, isInstanceOf<IDidNotAskPermission>());
+  });
+
   testWidgets('You have more experience screen test', (tester) async {
     var screen = YouHaveMoreExperienceScreen();
 
