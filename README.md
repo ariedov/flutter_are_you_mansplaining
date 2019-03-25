@@ -1,16 +1,16 @@
 # mansplaining
 
-A new Flutter project.
+[![Build Status](https://app.bitrise.io/app/88e34b3211180adc/status.svg?token=Gp3mFp5NFdU5GHA0sbYonw&branch=master)](https://app.bitrise.io/app/88e34b3211180adc)
+[![codecov](https://codecov.io/gh/ariedov/flutter_are_you_mansplaining/branch/master/graph/badge.svg)](https://codecov.io/gh/ariedov/flutter_are_you_mansplaining)
 
-## Getting Started
+A mobile application inspired by this tweet: https://twitter.com/Lexialex/status/1109436470547214337
 
-This project is a starting point for a Flutter application.
+If you're not sure if you are mansplaining or not, here is an easy way to be sure.
 
-A few resources to get you started if this is your first Flutter project:
+## Screen Shots
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![Initial](screenshots/mansplaining_initial.png)
+![Not Mansplaining](screenshots/not_mansplaining.png)
+![Probably Mansplaining](screenshots/mansplaining_initial.png)
+![Definitely Mansplaining](screenshots/definitely_mansplaining.png)
+![Stop Now](screenshots/stop_now.png)
