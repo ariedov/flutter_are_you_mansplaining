@@ -7,6 +7,6 @@ If you're not sure if you are mansplaining or not, here is an easy way to be sur
 
 ![Initial](screenshots/mansplaining_initial.png)
 ![Not Mansplaining](screenshots/not_mansplaining.png)
-![Probably Mansplaining](screenshots/mansplaining_initial.png)
+![Probably Mansplaining](screenshots/probably_mansplaining.png)
 ![Definitely Mansplaining](screenshots/definitely_mansplaining.png)
 ![Stop Now](screenshots/stop_now.png)
