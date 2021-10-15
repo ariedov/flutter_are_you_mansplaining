@@ -1,63 +1,61 @@
-import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/answer.dart';
 import 'package:mansplaining/logic/status.dart';
 
 abstract class Screen {
-
   String get title;
 }
 
 abstract class ActionableScreen extends Screen {
-
-  List<Action> get actions;
+  List<Answer> get actions;
 }
 
 abstract class ResultScreen extends Screen {
-
   Status get status;
 }
 
 class DidSheAskToExplainThisScreen extends ActionableScreen {
-
   @override
   String get title => "Did she ask you to explain it?";
 
   @override
-  List<Action> get actions => [No(), Yes()];
+  List<Answer> get actions => [No(), Yes()];
 }
 
 class YouHaveMoreExperienceScreen extends ActionableScreen {
-
   @override
   String get title => "Do you have more relevant experience?";
 
   @override
-  List<Action> get actions => [
-    SheIsAnExpert(),
-    SheHasMoreExperience(),
-    AboutTheSameExperience(),
-    IHaveMoreExperience()];
+  List<Answer> get actions => [
+        SheIsAnExpert(),
+        SheHasMoreExperience(),
+        AboutTheSameExperience(),
+        IHaveMoreExperience()
+      ];
 }
 
 class MostMenWithHerEducationWillKnowThisScreen extends ActionableScreen {
+  @override
+  String get title =>
+      "Would most men with her education & experience already know this?";
 
   @override
-  String get title => "Would most men with her education & experience already know this?";
-
-  @override
-  List<Action> get actions => [No(), Yes()];
+  List<Answer> get actions => [No(), Yes()];
 }
 
 class YouAskedIfSheNeedsExplanationScreen extends ActionableScreen {
-
   @override
   String get title => "Did you ask if she needed it explained?";
 
   @override
-  List<Action> get actions => [SheRefusedExplanation(), IDidNotAskPermission(), SheAgreedToExplanation()];
+  List<Answer> get actions => [
+        SheRefusedExplanation(),
+        IDidNotAskPermission(),
+        SheAgreedToExplanation()
+      ];
 }
 
 class NotMansplainingScreen extends ResultScreen {
-
   @override
   Status get status => Status.Good;
 
@@ -66,7 +64,6 @@ class NotMansplainingScreen extends ResultScreen {
 }
 
 class ProbablyMansplainingScreen extends ResultScreen {
-
   @override
   Status get status => Status.Bad;
 
@@ -75,7 +72,6 @@ class ProbablyMansplainingScreen extends ResultScreen {
 }
 
 class DefinitelyMansplainingScreen extends ResultScreen {
-
   @override
   Status get status => Status.Terrible;
 
@@ -84,7 +80,6 @@ class DefinitelyMansplainingScreen extends ResultScreen {
 }
 
 class StopNowScreen extends ResultScreen {
-
   @override
   Status get status => Status.Disaster;
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class InitialScreenWidget extends StatelessWidget {
-
   final VoidCallback startFlowCallback;
 
-  const InitialScreenWidget({Key key, this.startFlowCallback}) : super(key: key);
+  const InitialScreenWidget({Key key, this.startFlowCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class InitialScreenWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: 32.0),
-          RaisedButton(
+          ElevatedButton(
             child: Text(
-                "Let's find out!",
-                style: TextStyle(fontSize: 28.0),
+              "Let's find out!",
+              style: TextStyle(fontSize: 28.0),
             ),
             onPressed: startFlowCallback,
           ),

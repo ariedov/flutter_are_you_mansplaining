@@ -1,12 +1,11 @@
-import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/answer.dart';
 import 'package:mansplaining/logic/exceptions.dart';
 import 'package:mansplaining/logic/screens.dart';
 
 class NavigatorReducer {
-
   Screen get first => new DidSheAskToExplainThisScreen();
 
-  Screen navigate(Screen screen, Action action) {
+  Screen navigate(Screen screen, Answer action) {
     switch (screen.runtimeType) {
       case DidSheAskToExplainThisScreen:
         return _screenForDidSheAskToExplain(action);
@@ -21,7 +20,7 @@ class NavigatorReducer {
     }
   }
 
-  _screenForDidSheAskToExplain(Action action) {
+  _screenForDidSheAskToExplain(Answer action) {
     switch (action.runtimeType) {
       case Yes:
         return NotMansplainingScreen();
@@ -32,7 +31,7 @@ class NavigatorReducer {
     }
   }
 
-  _screenForYouHaveMoreExperience(Action action) {
+  _screenForYouHaveMoreExperience(Answer action) {
     switch (action.runtimeType) {
       case IHaveMoreExperience:
         return MostMenWithHerEducationWillKnowThisScreen();
@@ -47,7 +46,7 @@ class NavigatorReducer {
     }
   }
 
-  _screenForMostMenWithHerEducationWouldKnow(Action action) {
+  _screenForMostMenWithHerEducationWouldKnow(Answer action) {
     switch (action.runtimeType) {
       case Yes:
         return ProbablyMansplainingScreen();
@@ -58,7 +57,7 @@ class NavigatorReducer {
     }
   }
 
-  _screenForYouAskedIfSheNeedsExplanation(Action action) {
+  _screenForYouAskedIfSheNeedsExplanation(Answer action) {
     switch (action.runtimeType) {
       case SheAgreedToExplanation:
         return NotMansplainingScreen();

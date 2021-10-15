@@ -8,7 +8,8 @@ class ResultScreenWidget extends StatelessWidget {
   final ResultScreen screen;
   final ResultScreenCallback startOverCallback;
 
-  const ResultScreenWidget({Key key, this.screen, this.startOverCallback}) : super(key: key);
+  const ResultScreenWidget({Key key, this.screen, this.startOverCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,9 @@ class ResultScreenWidget extends StatelessWidget {
                 color: _buildColor(),
                 child: AutoSizeText(
                   screen.title,
-                  style: TextStyle(fontSize: 48.0),
+                  style: TextStyle(fontSize: 42.0),
                   maxLines: 4,
-                  minFontSize: 48.0,
+                  minFontSize: 42.0,
                 ),
               ),
             ),
@@ -38,10 +39,13 @@ class ResultScreenWidget extends StatelessWidget {
                   icon: Icon(Icons.settings_backup_restore),
                   onPressed: () => startOverCallback(context),
                 ),
-                SizedBox(width: 16.0,),
+                SizedBox(
+                  width: 16.0,
+                ),
                 IconButton(
                   icon: Icon(Icons.share),
-                  onPressed: () => Share.share("Mainsplaining app conclusion: ${screen.title}"),
+                  onPressed: () => Share.share(
+                      "Mainsplaining app conclusion: ${screen.title}"),
                 )
               ],
             )

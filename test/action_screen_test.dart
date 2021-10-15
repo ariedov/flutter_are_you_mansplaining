@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mansplaining/logic/action.dart';
+import 'package:mansplaining/logic/answer.dart';
 import 'package:mansplaining/logic/screens.dart';
 import 'package:mansplaining/ui/actionable_screen.dart';
 
@@ -13,7 +13,8 @@ void main() {
     List<ScreenActionPair> callbackEvents = [];
     await tester.pumpWidget(boilerplate(ScreenWidget(
       screen: screen,
-      callback: (context, screen, action) => callbackEvents.add(ScreenActionPair(screen, action)),
+      callback: (context, screen, action) =>
+          callbackEvents.add(ScreenActionPair(screen, action)),
     )));
 
     final titleFinder = find.text(screen.title);
@@ -33,13 +34,15 @@ void main() {
     expect(callbackEvents[1].action, isInstanceOf<Yes>());
   });
 
-  testWidgets('Most men with her experience would know this screen test', (tester) async {
+  testWidgets('Most men with her experience would know this screen test',
+      (tester) async {
     var screen = MostMenWithHerEducationWillKnowThisScreen();
 
     List<ScreenActionPair> callbackEvents = [];
     await tester.pumpWidget(boilerplate(ScreenWidget(
       screen: screen,
-      callback: (context, screen, action) => callbackEvents.add(ScreenActionPair(screen, action)),
+      callback: (context, screen, action) =>
+          callbackEvents.add(ScreenActionPair(screen, action)),
     )));
 
     final titleFinder = find.text(screen.title);
@@ -65,14 +68,16 @@ void main() {
     List<ScreenActionPair> callbackEvents = [];
     await tester.pumpWidget(boilerplate(ScreenWidget(
       screen: screen,
-      callback: (context, screen, action) => callbackEvents.add(ScreenActionPair(screen, action)),
+      callback: (context, screen, action) =>
+          callbackEvents.add(ScreenActionPair(screen, action)),
     )));
 
     final titleFinder = find.text(screen.title);
     expect(titleFinder, findsOneWidget);
 
     final sheRefusedExplanationFinder = find.text(SheRefusedExplanation().name);
-    final sheAgreedToExplanationFinder = find.text(SheAgreedToExplanation().name);
+    final sheAgreedToExplanationFinder =
+        find.text(SheAgreedToExplanation().name);
     final noAskFinderFinder = find.text(IDidNotAskPermission().name);
 
     expect(sheRefusedExplanationFinder, findsOneWidget);
@@ -98,16 +103,21 @@ void main() {
     List<ScreenActionPair> callbackEvents = [];
     await tester.pumpWidget(boilerplate(ScreenWidget(
       screen: screen,
-      callback: (context, screen, action) => callbackEvents.add(ScreenActionPair(screen, action)),
+      callback: (context, screen, action) =>
+          callbackEvents.add(ScreenActionPair(screen, action)),
     )));
 
     final titleFinder = find.text(screen.title);
     expect(titleFinder, findsOneWidget);
 
-    final iHaveMoreExperienceActionFinder = find.widgetWithText(RaisedButton, IHaveMoreExperience().name);
-    final sameExperienceActionFinder = find.widgetWithText(RaisedButton, AboutTheSameExperience().name);
-    final sheHasMoreExperienceActionFinder = find.widgetWithText(RaisedButton, SheHasMoreExperience().name);
-    final sheIsAnExpertActionFinder = find.widgetWithText(RaisedButton, SheIsAnExpert().name);
+    final iHaveMoreExperienceActionFinder =
+        find.widgetWithText(ElevatedButton, IHaveMoreExperience().name);
+    final sameExperienceActionFinder =
+        find.widgetWithText(ElevatedButton, AboutTheSameExperience().name);
+    final sheHasMoreExperienceActionFinder =
+        find.widgetWithText(ElevatedButton, SheHasMoreExperience().name);
+    final sheIsAnExpertActionFinder =
+        find.widgetWithText(ElevatedButton, SheIsAnExpert().name);
 
     expect(iHaveMoreExperienceActionFinder, findsOneWidget);
     expect(sameExperienceActionFinder, findsOneWidget);
@@ -138,7 +148,7 @@ void main() {
 
 class ScreenActionPair {
   final Screen screen;
-  final Action action;
+  final Answer action;
 
   ScreenActionPair(this.screen, this.action);
 }
